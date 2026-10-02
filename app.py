@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from tensorflow.keras.models import load_model
 from PIL import Image
 import numpy as np
+import os
 
 app = Flask(__name__)
 
@@ -43,6 +44,9 @@ def home():
 
             # Keep pixel values between 0 and 1
             result = np.clip(result, 0, 1)
+
+            # Create static folder if it does not exist
+            os.makedirs("static", exist_ok=True)
 
             # Save denoised image
             output_path = "static/denoised.png"
