@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GAN Image Denoising</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f6f8;
+            padding: 50px;
+        }
+
+        .container {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            margin: 20px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+        }
+
+        img {
+            max-width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>GAN Image Denoising</h1>
+
+        <p>
+            Upload a noisy image to remove unwanted noise
+            using the trained GAN model.
+        </p>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            <input type="file"
+                   name="image"
+                   accept="image/*"
+                   required>
+
+            <br>
+
+            <button type="submit">
+                Denoise Image
+            </button>
+
+        </form>
+
+        {% if denoised_image %}
+
+            <h2>Denoised Image</h2>
+
+            <img src="{{ denoised_image }}"
+                 alt="Denoised Image">
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
